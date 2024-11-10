@@ -82,7 +82,7 @@ router.get("/orders", requireSignIn, getOrdersController);
 //all orders
 router.get("/all-orders", requireSignIn, isAdmin, getAllOrdersController);
 
-// order status update
+// order status update.
 router.put(
   "/order-status/:orderId",
   requireSignIn,
