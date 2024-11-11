@@ -1,0 +1,22 @@
+name: Auto Deploy to Netlify 
+on: 
+push: 
+branches: ["main"] 
+ 
+jobs: 
+auto-deploy: 
+runs-on: ubuntu-latest 
+steps: -name: Checkout the repository 
+uses: actions/checkout@v3 -name: Install Node and NPM 
+uses: actions/setup-node@v3 
+with: 
+node-version: '16' -name: Install necessary packages 
+run: npm install -name: Testing the project 
+run: npm run test -name: Build the project 
+run: npm run build -name: Publish 
+uses: netlify/actions/cli@master 
+with: 
+args: deploy --build --prod 
+env: 
+NETLIFY_SITE_ID: 2820a771-ffd3-45ba-b198-8d7ba054119d
+NETLIFY_AUTH_TOKEN: nfp_378YY3ZFvpVpjxXknWoNzYbWifyfK3YK3ea1
